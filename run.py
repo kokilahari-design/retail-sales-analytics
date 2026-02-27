@@ -1,3 +1,4 @@
+#run() method of Flask class runs the application on the local development server.
 
 from app import create_app
 
