@@ -10,4 +10,4 @@ for _ in range(5):
     data = generate_sale_event()
     response = requests.post(API_URL, json=data)   # sends HTTP POST request to the API endpoint server with the generated sale data as JSON payload
     print(response.json())
-  
+   
