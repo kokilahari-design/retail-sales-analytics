@@ -1,8 +1,9 @@
-#run() method of Flask class runs the application on the local development server.
+# Application Entry Point
+# run() method of Flask class runs the application on the local development server.
 
 from app import create_app
 
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
