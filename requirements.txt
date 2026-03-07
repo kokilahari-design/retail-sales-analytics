@@ -2,6 +2,7 @@
 flask
 pymysql
 pandas
-apache-airflow
+requests
 matplotlib
+apache-airflow
 gunicorn
