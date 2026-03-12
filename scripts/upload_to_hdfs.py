@@ -1,7 +1,7 @@
 import subprocess
 from data_genrator import generate_daily_sales_csv
 
-def upload_to_hdfs():
+def uploaded_to_hdfs():
 
     local_file = generate_daily_sales_csv()
     hdfs_dir = "/data/retail/raw/"
