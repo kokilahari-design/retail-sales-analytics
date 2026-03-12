@@ -6,6 +6,7 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
 import pandas as pd
 from app.models.database import get_connection
+from upload_to_hdfs import uploaded_to_hdfs
 
 #.dt - Datetime accessor to access specialized time-series properties and methods (like .hour, .day, .floor(), etc.)
 # .floor('H') - moves the timestamp to the start of the hour. All mins, secs, and microseconds are reset to zero. (Eg., 2025-12-06 14:37:55 becomes 2025-12-06 14:00:00)
@@ -44,11 +45,17 @@ def transform_and_load():
 with DAG(
     dag_id="retail_sales_etl",
     start_date=datetime(2024,1,1),
-    schedule_interval=timedelta('@daily'),
+    schedule_interval='@daily',
     catchup=False
 ) as dag:
+    
+    generate_task = PythonOperator(
+        task_id="generate_sales_data",
+        python_callable=uploaded_to_hdfs
+    )
 
     transform_task = PythonOperator(
         task_id="transform_and_load_task",
         python_callable=transform_and_load
     )
+    generate_task >> transform_task
