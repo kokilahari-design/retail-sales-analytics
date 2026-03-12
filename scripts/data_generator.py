@@ -3,6 +3,9 @@ import random
 import pandas as pd
 from datetime import datetime
 import os
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 CUSTOMER_NAMES = ["kokila", "Sandy", "Kalai", "Hari", "Viswa", "Sharvesh", "Vedanth", "Hema", "Deebika", "David", "Henry"]
 
@@ -45,6 +48,6 @@ def generate_daily_sales_csv():
     df.to_csv(filename, index=False)
     print("CSV generated:", filename)
 
-    return filename
+    return filename, records
 
 
