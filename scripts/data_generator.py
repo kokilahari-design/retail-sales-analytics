@@ -2,6 +2,7 @@
 import random
 import pandas as pd
 from datetime import datetime
+import os
 
 CUSTOMER_NAMES = ["kokila", "Sandy", "Kalai", "Hari", "Viswa", "Sharvesh", "Vedanth", "Hema", "Deebika", "David", "Henry"]
 
@@ -37,7 +38,9 @@ def generate_daily_sales_csv():
         records.append(generate_sale_event())
 
     df = pd.DataFrame(records)
-    filename = f"/tmp/sales_{datetime.now().date()}.csv"
+    filename = f"./raw_data/sales_{datetime.now().date()}.csv"
+    
+    os.makedirs(os.path.dirname(filename), exist_ok=True)           # Create directory if it does not exist
 
     df.to_csv(filename, index=False)
     print("CSV generated:", filename)
