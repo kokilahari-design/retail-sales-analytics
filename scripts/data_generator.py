@@ -46,8 +46,7 @@ def generate_daily_sales_csv():
     os.makedirs(os.path.dirname(filename), exist_ok=True)           # Create directory if it does not exist
 
     df.to_csv(filename, index=False)
-    print("CSV generated:", filename)
-
+    logging.info(f"CSV generated at {filename}")
     return filename, records
 
 
