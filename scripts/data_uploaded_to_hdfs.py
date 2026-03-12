@@ -1,6 +1,5 @@
 import subprocess
 import logging
-from data_genrator import generate_daily_sales_csv
 
 logging.basicConfig(level=logging.INFO)
 
