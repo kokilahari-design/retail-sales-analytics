@@ -45,5 +45,3 @@ def generate_daily_sales_csv():
     return filename
 
 
-if __name__ == "__main__":
-    generate_daily_sales_csv()
